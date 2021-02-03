@@ -63,7 +63,7 @@
                 <div class="app-header-left">
                     <ul class="header-menu nav">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
+                            <a href="{{ url('produtos') }}" class="nav-link">
                                 <i class="nav-link-icon fa fa-database"> </i>
                                 Produtos
                             </a>
@@ -118,7 +118,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboard</li>
                             <li>
-                                <a href="index.html" class="mm-active">
+                                <a href="{{ url('produtos') }}" class="mm-active">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Produtos
                                 </a>

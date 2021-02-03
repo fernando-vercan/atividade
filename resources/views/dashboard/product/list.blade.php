@@ -18,9 +18,9 @@
                 <tr>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
-                    <td>{{ ($product->active) == 1 ? "Ativo" : "Inativo" }}</td>
+                    <td>{{ $product->active == 1 ? 'Ativo' : 'Inativo' }}</td>
                     <td>
-                        <a href="{{ url('produtos/', $product->id) }}">Editar</a>
+                        <a href="{{ url('produtos/' . $product->id . '/edit') }}">Editar</a>
                     </td>
                 </tr>
             @endforeach
