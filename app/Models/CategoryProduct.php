@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Product;
 
-class Category_Product extends Model
+class CategoryProduct extends Model
 {
     use HasFactory;
 
     protected $table = 'category_product';
 
     protected $fillable = ['category_id', 'product_id'];
+
+    public $timestamps = false;
 
     public function categories()
     {
@@ -24,6 +26,4 @@ class Category_Product extends Model
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
-
-    public $timestamps = false;
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormProductRequest;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Category_Product;
 
 class ProductController extends Controller
 {
@@ -81,6 +80,7 @@ class ProductController extends Controller
      */
     public function update(FormProductRequest $request, $id)
     {
+        //
     }
 
     /**
