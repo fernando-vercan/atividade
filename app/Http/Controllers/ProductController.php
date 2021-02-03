@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\FormProductRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       return view('dashboard.product.list');
+        $products = Product::get(['id', 'name', 'price', 'active']);
+       return view('dashboard.product.list', ['products' => $products]);
     }
 
     /**
@@ -23,18 +25,21 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\FormProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormProductRequest $request)
     {
-        //
+  
+        $product = Product::create($request->all());
+        return view('dashboard.product.list')->with('message', 'Cadastrado com sucesso!');
+
     }
 
     /**
@@ -56,7 +61,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd();
     }
 
     /**

@@ -2,24 +2,28 @@
 
 @section('content')
     <div class="float-right">
-        <a href="" class="btn btn-sm btn-success">Cadastrar Produto</a>
+        <a href="{{ url('produtos/create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
     </div>
     <table class="mb-0 table">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Produto</th>
-                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Status</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
+            @foreach ($products as $product)
+                <tr>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>{{ ($product->active) == 1 ? "Ativo" : "Inativo" }}</td>
+                    <td>
+                        <a href="{{ url('produtos/', $product->id) }}">Editar</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection
