@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\FormProductRequest;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Category_Product;
 
 class ProductController extends Controller
 {
@@ -13,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       //
+        $products = Product::get(['id', 'name', 'price', 'active']);
+       return view('dashboard.product.list', ['products' => $products]);
     }
 
     /**
@@ -23,18 +27,36 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get(['id', 'name']);
+        return view('dashboard.product.create', ['categories' => $categories]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\FormProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormProductRequest $request)
     {
-        //
+
+        // $product = Product::create($request->all());
+        // $category_product = Category_Product::find($product->id);
+        // dd($request->all());
+        
+        $category = Category::find($request->category);
+
+        $category->products()->sync($request->all());
+
+
+        dd($category);
+
+
+
+
+
+        return view('dashboard.product.list');
+
     }
 
     /**
@@ -56,7 +78,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('dashboard.product.edit', ['product' => $product]);
     }
 
     /**
@@ -66,9 +89,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormProductRequest $request, $id)
     {
-        //
+        dd($id);
     }
 
     /**
