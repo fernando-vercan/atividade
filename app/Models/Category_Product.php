@@ -11,13 +11,19 @@ class Category_Product extends Model
 {
     use HasFactory;
 
+    protected $table = 'category_product';
+
     protected $fillable = ['category_id', 'product_id'];
 
-    public function categories(){
-        return $this->belongsTo(Category::class);
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function product(){
-        return $this->belongsTo(Product::class);
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
+
+    public $timestamps = false;
 }

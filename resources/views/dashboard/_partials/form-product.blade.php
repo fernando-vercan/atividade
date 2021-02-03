@@ -8,18 +8,18 @@
     </div>
     <div class="col-md-3">
         <div class="form-group">
-            <label for="name">Preço:</label>
-            <input class="form-control" type="text" name="price" id="price"
+            <label for="name">Preço R$:</label>
+            <input class="form-control" type="text" name="price" id="price" onkeyup="formatarMoeda();"
                 value=" {{ $product->price ?? @old('price') }} ">
         </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
             <label for="category">Categoria:</label>
-            <select class="form-control" name="category" id="category">
+            <select class="form-control" name="categories_ids[]" id="category">
                 <option value="">Selecione</option>
-                @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

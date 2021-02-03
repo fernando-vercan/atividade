@@ -17,8 +17,8 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->active == 1 ? 'Ativo' : 'Inativo' }}</td>
+                    <td>{{ $product->formatted_price }}</td>
+                    <td>{{ $product->formatted_active }}</td>
                     <td>
                         <a href="{{ url('produtos/' . $product->id . '/edit') }}">Editar</a>
                     </td>

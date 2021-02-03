@@ -16,8 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get(['id', 'name', 'price', 'active']);
-       return view('dashboard.product.list', ['products' => $products]);
+        $products = Product::all();
+
+        return view('dashboard.product.index', compact('products'));
     }
 
     /**
@@ -27,8 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::get(['id', 'name']);
-        return view('dashboard.product.create', ['categories' => $categories]);
+        $categories = Category::all();
+
+        return view('dashboard.product.create', compact('categories'));
     }
 
     /**
@@ -39,24 +41,11 @@ class ProductController extends Controller
      */
     public function store(FormProductRequest $request)
     {
+        $product = Product::create($request->all());
 
-        // $product = Product::create($request->all());
-        // $category_product = Category_Product::find($product->id);
-        // dd($request->all());
-        
-        $category = Category::find($request->category);
+        $product->categories()->sync($request->categories_ids);
 
-        $category->products()->sync($request->all());
-
-
-        dd($category);
-
-
-
-
-
-        return view('dashboard.product.list');
-
+        return redirect()->route('produtos.index');
     }
 
     /**
@@ -79,7 +68,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('dashboard.product.edit', ['product' => $product]);
+
+        return view('dashboard.product.edit', compact('products'));
     }
 
     /**
@@ -91,7 +81,6 @@ class ProductController extends Controller
      */
     public function update(FormProductRequest $request, $id)
     {
-        dd($id);
     }
 
     /**
