@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormProductRequest;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Category_Product;
 
 class ProductController extends Controller
 {
@@ -25,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        $categories = Category::get(['id', 'name']);
+        return view('dashboard.product.create', ['categories' => $categories]);
     }
 
     /**
@@ -36,9 +39,23 @@ class ProductController extends Controller
      */
     public function store(FormProductRequest $request)
     {
-  
-        $product = Product::create($request->all());
-        return view('dashboard.product.list')->with('message', 'Cadastrado com sucesso!');
+
+        // $product = Product::create($request->all());
+        // $category_product = Category_Product::find($product->id);
+        // dd($request->all());
+        
+        $category = Category::find($request->category);
+
+        $category->products()->sync($request->all());
+
+
+        dd($category);
+
+
+
+
+
+        return view('dashboard.product.list');
 
     }
 
