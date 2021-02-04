@@ -2,16 +2,12 @@
 
 @section('content')
     <h4 class="">Editar Produto</h4>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <form action="{{ url('produtos') }}" method="post">
+
+    @include('dashboard._partials.alert-success')
+
+    @include('dashboard._partials.alert-danger')
+
+    <form action="{{ route('produtos.update', $product->id) }}" method="post">
         @method('PUT')
         @csrf
 

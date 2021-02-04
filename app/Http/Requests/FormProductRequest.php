@@ -27,12 +27,17 @@ class FormProductRequest extends FormRequest
             'name' => 'required',
             'price' => 'required',
             'active' => 'required',
-            'categories' => 'required'
+            'categories_ids' => 'required'
         ];
     }
 
     public function messages()
     {
-        return ['required' => 'Esse campo :attribute é obrigatório!'];
+        return [
+            'name.required' => 'Esse campo nome é obrigatório!',
+            'price.required' => 'Esse campo preço é obrigatório!',
+            'active.required' => 'Esse campo status é obrigatório!',
+            'categories_ids.required' => 'Esse campo Categorias é obrigatório!'
+        ];
     }
 }
