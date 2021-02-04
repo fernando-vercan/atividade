@@ -100,13 +100,13 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboard</li>
                             <li>
-                                <a href="{{ url('produtos') }}" class="mm-active">
+                                <a href="{{ route('produtos.index') }}" class="mm-active">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Produtos
                                 </a>
                             </li>
                             <li>
-                                <a href="{{  }}">
+                                <a href="{{ route('categorias.index') }}">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Categorias
                                 </a>
