@@ -27,7 +27,7 @@ class FormProductRequest extends FormRequest
             'name' => 'required',
             'price' => 'required',
             'active' => 'required',
-            'categories' => 'required'
+            'categories_ids' => 'required'
         ];
     }
 

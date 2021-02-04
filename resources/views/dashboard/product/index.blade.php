@@ -21,6 +21,11 @@
                     <td>{{ $product->formatted_active }}</td>
                     <td>
                         <a href="{{ url('produtos/' . $product->id . '/edit') }}">Editar</a>
+                        <form action="{{ route('produtos.destroy', $product->id) }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-sm btn-danger">Deletar</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

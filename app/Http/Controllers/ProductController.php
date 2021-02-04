@@ -66,9 +66,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $product = Product::findOrFail($id);
 
-        return view('dashboard.product.edit', compact('products'));
+        return view('dashboard.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -80,7 +81,12 @@ class ProductController extends Controller
      */
     public function update(FormProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->update($request->all());
+
+        $product->categories()->sync($request->categories_ids);
+
+        return redirect()->route('produtos.index');
     }
 
     /**
@@ -91,6 +97,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        
+        return redirect()->route('produtos.index');
     }
 }

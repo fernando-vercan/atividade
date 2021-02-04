@@ -19,8 +19,8 @@
             <select class="form-control js-example-basic-multiple-limit" multiple name="categories_ids[]"
                 id="categories">
                 <option value="">Selecione</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @foreach ($categories as $key => $category)
+                    <option value="{{ $category->id }}" {{ !empty(old('categories_ids')) && in_array($category->id, old('categories_ids')) ? ' selected="selected"' : '' }}>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -29,8 +29,8 @@
         <label for="active">Ativo:</label>
         <select class="form-control" name="active" id="active">
             <option value="">Selecione</option>
-            <option value="1">Ativo</option>
-            <option value="0">Inative</option>
+            <option value="1" @if(isset($product) && $product->active == 1){{"selected"}} @endif>Ativo</option>
+            <option value="0" @if(isset($product) && $product->active == 0){{"selected"}} @endif>Inativo</option>
         </select>
     </div>
 </div>

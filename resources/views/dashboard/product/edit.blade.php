@@ -11,7 +11,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ url('produtos') }}" method="post">
+    <form action="{{ route('produtos.update', $product->id) }}" method="post">
         @method('PUT')
         @csrf
 
