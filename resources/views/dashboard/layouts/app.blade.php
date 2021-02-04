@@ -60,26 +60,7 @@
                     </button>
                 </span>
             </div>
-            <div class="app-header__content">
-                <div class="app-header-left">
-                    <ul class="header-menu nav">
-                        <li class="nav-item">
-                            <a href="{{ url('produtos') }}" class="nav-link">
-                                <i class="nav-link-icon fa fa-database"> </i>
-                                Produtos
-                            </a>
-                        </li>
-                        <li class="btn-group nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-edit"></i>
-                                Categorias
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
-
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
@@ -146,7 +127,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
-    <script src="{{ asset('js/select.js') }}"></script>
+    <script src="{{ asset('js/jquery.mask.js') }}"></script>
+    <script src="{{ asset('js/utils.js') }}"></script>
     <script src="{{ asset('js/input_price.js') }}"></script>
 </body>
 

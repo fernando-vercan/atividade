@@ -33,6 +33,11 @@ class FormProductRequest extends FormRequest
 
     public function messages()
     {
-        return ['required' => 'Esse campo :attribute é obrigatório!'];
+        return [
+            'name.required' => 'Esse campo nome é obrigatório!',
+            'price.required' => 'Esse campo preço é obrigatório!',
+            'active.required' => 'Esse campo status é obrigatório!',
+            'categories_ids.required' => 'Esse campo Categorias é obrigatório!'
+        ];
     }
 }

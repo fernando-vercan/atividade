@@ -44,7 +44,7 @@ class ProductController extends Controller
 
         $product->categories()->sync($request->categories_ids);
 
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.create')->with('message', 'Cadastrado com sucesso!');
     }
 
     /**
@@ -55,7 +55,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::with('categories')->findOrFail($id);
+
+        return view('dashboard.product.show', compact('product'));
     }
 
     /**
@@ -66,8 +68,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
-        $product = Product::findOrFail($id);
+        $product = Product::with('categories')->findOrFail($id);
+
+        $categories_ids = $product->categories->pluck('id')->toArray();
+
+        $categories = Category::whereNotIn('id', $categories_ids)->get();
 
         return view('dashboard.product.edit', compact('product', 'categories'));
     }
@@ -81,12 +86,13 @@ class ProductController extends Controller
      */
     public function update(FormProductRequest $request, $id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
+
         $product->update($request->all());
 
         $product->categories()->sync($request->categories_ids);
 
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.edit', $product->id)->with('message', 'Atualizado com sucesso!');
     }
 
     /**
@@ -97,9 +103,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->delete();
         
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')->with('message', 'Deletado com sucesso!');
     }
 }
