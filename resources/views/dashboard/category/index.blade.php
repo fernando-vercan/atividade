@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="float-right">
-        <a href="{{ url('produtos/create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
+        <a href="{{ url('produtos/create') }}" class="btn btn-sm btn-success">Cadastrar Categoria</a>
     </div>
     <table class="mb-0 table">
         <thead>
@@ -13,10 +13,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($categories as $category)
-            <tr>
-                <td>{{ $category->name }}</td>
-            </tr>
+            @foreach ($categories as $category)
+                <tr>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->name }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

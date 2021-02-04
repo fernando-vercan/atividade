@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <h4 class="">Cadastrar Produto</h4>
+    <h4 class="">Cadastrar Categoria</h4>
 
     @include('dashboard._partials.alert-success')
 
