@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
+    <h2>Listar Produtos</h2>
     <div class="float-right">
         <a href="{{ url('produtos/create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
         @include('dashboard._partials.alert-success')

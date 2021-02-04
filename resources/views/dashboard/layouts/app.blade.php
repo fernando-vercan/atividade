@@ -11,18 +11,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    <!--
-    =========================================================
-    * ArchitectUI HTML Theme Dashboard - v1.0.0
-    =========================================================
-    * Product Page: https://dashboardpack.com
-    * Copyright 2019 DashboardPack (https://dashboardpack.com)
-    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
-    =========================================================
-    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -100,7 +89,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboard</li>
                             <li>
-                                <a href="{{ route('produtos.index') }}" class="mm-active">
+                                <a href="{{ route('produtos.index') }}">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Produtos
                                 </a>
@@ -125,11 +114,10 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/select2.js') }}"></script>
-    <script src="{{ asset('js/jquery.mask.js') }}"></script>
-    <script src="{{ asset('js/utils.js') }}"></script>
-    <script src="{{ asset('js/input_price.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/select2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/mask.js') }}" type="text/javascript"></script>
+    @yield('js')   
 </body>
 
 </html>

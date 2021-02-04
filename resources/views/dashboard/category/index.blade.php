@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
+    <h2>Listar Categorias</h2>
     <div class="float-right">
         <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success">Cadastrar Categoria</a>
     </div>

@@ -11,7 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/assets/js/main.js', 'public/js/main.js');
+mix.js('resources/assets/js/select2.js', 'public/js/select2.js');
+mix.js('resources/assets/js/mask.js', 'public/js/mask.js');
+mix.js('resources/assets/js/product.js', 'public/js/product.js');
+
+mix.styles([
+    'resources/assets/css/main.css',
+    'resources/assets/css/select2.css',
+], 'public/css/main.css');

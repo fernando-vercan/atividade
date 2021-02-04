@@ -16,4 +16,9 @@
             <button class="btn btn-sm btn-primary">Cadastrar</button>
         </div>
     </form>
+
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/product.js') }}" type="text/javascript"></script>
 @endsection

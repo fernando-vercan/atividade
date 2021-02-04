@@ -10,8 +10,8 @@
             <label for="active">Status</label>
             <select class="form-control" name="active" required>
                 <option value="">Selecione</option>
-                <option value="1" @if (isset($product) && $product->active == 1) {{ 'selected' }} @endif>Ativo</option>
-            <option value="0" @if (isset($product) && $product->active == 0) {{ 'selected' }} @endif>Inativo</option>
+                <option value="1" @if (isset($category) && $category->active == 1) {{ 'selected' }} @endif>Ativo</option>
+                <option value="0" @if (isset($category) && $category->active == 0) {{ 'selected' }} @endif>Inativo</option>
             </select>
         </div>
     </div>
