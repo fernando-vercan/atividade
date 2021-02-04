@@ -10,11 +10,8 @@
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="active">Status</label>
-                <select class="form-control" name="active" disabled>
-                    <option value="1" @if (isset($category) && $category->active == 1) {{ 'selected' }} @endif>Ativo</option>
-                    <option value="0" @if (isset($category) && $category->active == 0) {{ 'selected' }} @endif>Inativo</option>
-                </select>
+                <label for="active">Ativo</label>
+                <input class="form-control" type="text" name="active" value="{{ $category->formatted_active }}" disabled>
             </div>
         </div>
     </div>

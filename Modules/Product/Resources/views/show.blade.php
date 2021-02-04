@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="categories">Categoria:</label><br>
+                <label for="categories">Categorias:</label><br>
                 <select class="form-control js-example-basic-multiple-limit" multiple name="categories_ids[]"
                     id="categories" disabled>
                     <option value="">Selecione</option>
@@ -32,13 +32,11 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
-            <label for="active">Ativo:</label>
-            <select class="form-control" name="active" id="active" disabled>
-                <option value="">Selecione</option>
-                <option value="1" @if (isset($product) && $product->active == 1) {{ 'selected' }} @endif>Ativo</option>
-                <option value="0" @if (isset($product) && $product->active == 0) {{ 'selected' }} @endif>Inativo</option>
-            </select>
+        <<div class="col-md-3">
+            <div class="form-group">
+                <label for="active">Ativo</label>
+                <input class="form-control" type="text" name="active" value="{{ $product->formatted_active }}" disabled>
+            </div>
         </div>
     </div>
 

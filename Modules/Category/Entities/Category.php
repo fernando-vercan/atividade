@@ -22,6 +22,6 @@ class Category extends Model
 
     public function getFormattedActiveAttribute()
     {
-        return $this->active ? "Ativo" : "Inativo";
+        return $this->active ? "Sim" : "Não";
     }
 }

@@ -25,7 +25,7 @@ class Product extends Model
 
     public function getFormattedActiveAttribute()
     {
-        return $this->active ? "Ativo" : "Inativo";
+        return $this->active ? "Sim" : "Não";
     }
 
     public function getFormattedPriceAttribute()
