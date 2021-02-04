@@ -7,7 +7,7 @@
 
     @include('dashboard._partials.alert-danger')
 
-    <form action="{{ route('produtos.store') }}" method="post">
+    <form action="{{ route('categorias.store') }}" method="post">
         @csrf
 
         @include('dashboard._partials.form-category')

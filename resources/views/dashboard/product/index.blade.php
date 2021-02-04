@@ -3,6 +3,7 @@
 @section('content')
     <div class="float-right">
         <a href="{{ url('produtos/create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
+        @include('dashboard._partials.alert-success')
     </div>
     <table class="mb-0 table">
         <thead>

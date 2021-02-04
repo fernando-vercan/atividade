@@ -7,7 +7,7 @@
 
     @include('dashboard._partials.alert-danger')
 
-    <form action="{{ route('category.update', $product->id) }}" method="post">
+    <form action="{{ route('categorias.update', $category->id) }}" method="post">
         @method('PUT')
         @csrf
 
