@@ -22,7 +22,7 @@ class CategoryController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->editColumn('active', function ($data) {
-                        return ($data->active == 1) ? "Sim" : "Não";
+                        return $data->formatted_active;
                     })
                     ->addColumn('action', function ($row) {
                         $btn = '<a href="categorias/ver/'.$row->id.'" class="btn btn-link btn-sm">Visualizar</a>';
@@ -112,7 +112,6 @@ class CategoryController extends Controller
     public function destroy(Request $request, $id)
     {
         if ($request->ajax()) {
-
             $category = Category::findOrFail($id);
 
             $category->delete();
