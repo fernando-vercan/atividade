@@ -2,10 +2,12 @@
 
 namespace Modules\Product\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Product\Entities\Product;
 use Modules\Category\Entities\Category;
 use Modules\Product\Http\Requests\FormProductRequest;
+use DataTables;
 
 class ProductController extends Controller
 {
@@ -14,12 +16,32 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        if ($request->ajax()) {
+            $data = Product::all();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('active', function ($product) {
+                        return $product->formatted_active;
+                    })
+                    ->editColumn('price', function ($product) {
+                        return $product->formatted_price;
+                    })
+                    ->addColumn('action', function ($row) {
+                        $btn = '<a href="produtos/ver/'.$row->id.'" class="btn btn-link btn-sm">Visualizar</a>';
+                        $btn = $btn.'<a href="produtos/editar/'.$row->id.'" class="btn btn-link btn-sm">Editar</a>';
+                        $btn = $btn.'<a id="delete" data-id="'.$row->id.'" class="btn btn-sm btn-danger">Delete</a>';
 
-        return view('product::index', compact('products'));
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
+        return view('product::index');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -102,12 +124,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        if ($request->ajax()) {
+            $product = Product::findOrFail($id);
+
+            $product->delete();
+
+            return response()->json(['message' => 'Deletado com sucesso!']);
+        }
+        
         $product = Product::findOrFail($id);
-        
+
         $product->delete();
-        
+
         return redirect()->route('produtos.index')->with('message', 'Deletado com sucesso!');
     }
 }
