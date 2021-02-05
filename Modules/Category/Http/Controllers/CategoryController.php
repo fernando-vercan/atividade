@@ -2,9 +2,11 @@
 
 namespace Modules\Category\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Category\Entities\Category;
 use Modules\Category\Http\Requests\FormCategoryRequest;
+use DataTables;
 
 class CategoryController extends Controller
 {
@@ -13,11 +15,27 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::all();
+        if ($request->ajax()) {
+            $data = Category::all();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('active', function ($data) {
+                        return ($data->active == 1) ? "Sim" : "Não";
+                    })
+                    ->addColumn('action', function ($row) {
+                        $btn = '<a href="categorias/ver/'.$row->id.'" class="btn btn-link btn-sm">Visualizar</a>';
+                        $btn = $btn.'<a href="categorias/editar/'.$row->id.'" class="btn btn-link btn-sm">Editar</a>';
+                        $btn = $btn.'<a id="delete" data-id="'.$row->id.'" class="btn btn-sm btn-danger">Delete</a>';
 
-        return view('category::index', compact('categories'));
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
+        return view('category::index');
     }
 
     /**
@@ -65,7 +83,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        
+
         return view('category::edit', compact('category'));
     }
 
@@ -91,8 +109,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        if ($request->ajax()) {
+
+            $category = Category::findOrFail($id);
+
+            $category->delete();
+
+            return response()->json(['message' => 'Deletado com sucesso!']);
+        }
+
         $category = Category::findOrFail($id);
 
         $category->delete();
