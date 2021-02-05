@@ -1,8 +1,7 @@
 @extends('product::layouts.master')
 
 @section('content')
-    <a class="float-right btn btn-sm btn-outline-primary"
-        href="{{ route('produtos.edit', $product->id) }}">Editar</a>
+    <a class="float-right btn btn-sm btn-outline-primary" href="{{ route('produtos.edit', $product->id) }}">Editar</a>
     <h4 class="">Ver Produto</h4>
     <div class="row">
         <div class="col-md-3">
