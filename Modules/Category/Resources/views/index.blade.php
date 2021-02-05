@@ -1,11 +1,11 @@
-@extends('dashboard.layouts.app')
+@extends('category::layouts.master')
 
 @section('content')
     <h2>Listar Categorias</h2>
     <div class="float-right">
         <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success">Cadastrar Categoria</a>
     </div>
-    @include('dashboard._partials.alert-success')
+    @include('category::_partials.alert-success')
     <table class="mb-0 table">
         <thead>
             <tr>

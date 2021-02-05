@@ -13,7 +13,7 @@ use Modules\Category\Http\Controllers\CategoryController;
 |
 */
 
-Route::group(['prefix' => 'categorias'], function () {
+Route::group(['prefix' => 'categorias', 'middleware' => 'auth'], function () {
     Route::get('/', [CategoryController::class, 'index'])->name('categorias.index');
     Route::get('/cadastrar', [CategoryController::class, 'create'])->name('categorias.create');
     Route::post('/registrar', [CategoryController::class, 'store'])->name('categorias.store');

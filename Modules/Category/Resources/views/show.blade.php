@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.app')
+@extends('category::layouts.master')
 
 @section('content')
     <div class="row">
