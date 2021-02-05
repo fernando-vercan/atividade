@@ -1,8 +1,8 @@
-@extends('dashboard.layouts.app')
+@extends('product::layouts.master')
 
 @section('content')
     <a class="float-right btn btn-sm btn-outline-primary"
-        href="{{ url('produtos/' . $product->id . '/edit') }}">Editar</a>
+        href="{{ route('produtos.edit', $product->id) }}">Editar</a>
     <h4 class="">Ver Produto</h4>
     <div class="row">
         <div class="col-md-3">
@@ -32,13 +32,11 @@
                 </select>
             </div>
         </div>
-        <<div class="col-md-3">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="active">Ativo</label>
                 <input class="form-control" type="text" name="active" value="{{ $product->formatted_active }}" disabled>
             </div>
         </div>
     </div>
-
-
 @endsection

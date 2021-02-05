@@ -100,6 +100,16 @@
                                     Categorias
                                 </a>
                             </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        {{ __('Sair') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -117,7 +127,7 @@
     <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/mask.js') }}" type="text/javascript"></script>
-    @yield('js')   
+    @yield('js')
 </body>
 
 </html>

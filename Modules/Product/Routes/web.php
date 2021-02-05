@@ -13,7 +13,7 @@ use Modules\Product\Http\Controllers\ProductController;
 |
 */
 
-Route::group(['prefix' => 'produtos'], function () {
+Route::group(['prefix' => 'produtos', 'middleware' => 'auth'], function () {
     Route::get('/', [ProductController::class, 'index'])->name('produtos.index');
     Route::get('/cadastrar', [ProductController::class, 'create'])->name('produtos.create');
     Route::post('/registrar', [ProductController::class, 'store'])->name('produtos.store');

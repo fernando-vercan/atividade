@@ -34,8 +34,8 @@
         <label for="active">Ativo:</label>
         <select class="form-control" name="active" required>
             <option value="">Selecione</option>
-            <option value="1" @if (isset($product) && $product->active == 1) {{ 'selected' }} @endif>Ativo</option>
-            <option value="0" @if (isset($product) && $product->active == 0) {{ 'selected' }} @endif>Inativo</option>
+            <option value="1" @if (isset($product) && $product->active == 1) {{ 'selected' }} @endif>Sim</option>
+            <option value="0" @if (isset($product) && $product->active == 0) {{ 'selected' }} @endif>Não</option>
         </select>
     </div>
 </div>

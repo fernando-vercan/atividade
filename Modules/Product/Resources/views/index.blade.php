@@ -1,9 +1,9 @@
-@extends('dashboard.layouts.app')
+@extends('product::layouts.master')
 
 @section('content')
     <h2>Listar Produtos</h2>
 
-    @include('dashboard._partials.alert-success')
+    @include('product::_partials.alert-success')
 
     <div class="float-right">
         <a href="{{ route('produtos.create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
@@ -13,7 +13,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Preço</th>
-                <th>Status</th>
+                <th>Ativo</th>
                 <th>Ações</th>
             </tr>
         </thead>
