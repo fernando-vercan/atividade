@@ -4,9 +4,9 @@
     <h2>Listar Produtos</h2>
 
     @include('product::_partials.alert-success')
-    <span id="mensagem" class="w-100"></span>
+    <div id="mensagem" class="w-100"></div>
 
-    <div class="float-right">
+    <div class="float-right mb-3">
         <a href="{{ route('produtos.create') }}" class="btn btn-sm btn-success">Cadastrar Produto</a>
     </div>
     <table class="mb-0 table data-table">
@@ -33,6 +33,30 @@
         $(document).ready(function() {
 
             var table = $('.data-table').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "Não encontrou nenhum resultado",
+                    "sEmptyTable": "Nenhum dado dispovível nessa tabela",
+                    "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros de 0 a 0 de um total de 0 registros",
+                    "sInfoFiltered": "(filtrado de um total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Carregando...",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sLast": "Último",
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ativar para ordenar columna ascendente",
+                        "sSortDescending": ": Ativar para ordenar columna descendente"
+                    }
+                },
                 processing: true,
                 serverSide: true,
                 ajax: "{{ url('produtos') }}",

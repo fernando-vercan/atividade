@@ -22,11 +22,11 @@ class ProductController extends Controller
             $data = Product::all();
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->editColumn('active', function ($data) {
-                        return ($data->active == 1) ? "Sim" : "Não";
+                    ->editColumn('active', function ($product) {
+                        return $product->formatted_active;
                     })
-                    ->editColumn('price', function ($data) {
-                        return 'R$ ' . number_format($data->price, 2, ',', '.');
+                    ->editColumn('price', function ($product) {
+                        return $product->formatted_price;
                     })
                     ->addColumn('action', function ($row) {
                         $btn = '<a href="produtos/ver/'.$row->id.'" class="btn btn-link btn-sm">Visualizar</a>';
